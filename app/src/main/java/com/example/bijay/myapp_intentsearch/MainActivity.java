@@ -1,5 +1,6 @@
 package com.example.bijay.myapp_intentsearch;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.net.URI;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void Search (View v){
-        Intent srchintent = new Intent(Intent.ACTION_WEB_SEARCH, Uri.parse(srchtext.getText().toString()));
-        //Toast.makeText(getApplicationContext(),srchtext.getText().toString(),Toast.LENGTH_SHORT).show();
+        String text = srchtext.getText().toString();
+        Intent srchintent = new Intent(Intent.ACTION_WEB_SEARCH);
+        srchintent.putExtra(SearchManager.QUERY, text );
         startActivity(srchintent);
     }
 }
